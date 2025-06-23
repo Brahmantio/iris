@@ -119,6 +119,6 @@ def heart():
                 st.success(f"Prediction of this app is {output}")
 
 if add_selectitem == "Iris species!":
-    iris()
+        iris()
 elif add_selectitem == "Heart Disease!":
-    heart()
+        heart()
