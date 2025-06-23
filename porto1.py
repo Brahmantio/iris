@@ -8,7 +8,7 @@ st.set_page_config(page_title="Halaman Modelling", layout="wide")
 st.write("""
 # Welcome to my portofolio Data Analyst
 
-HOUSE PREDICITION PREDICTION 
+
 """)
 add_selectitem = st.sidebar.selectbox("Want to open about?", ("Iris species!", "Heart Disease!"))
 
@@ -66,7 +66,7 @@ def heart():
     if uploaded_file is not None:
         input_df = pd.read_csv(uploaded_file)
     else:
-        def user_input_features():
+        def user_input_features1():
             st.sidebar.header('Manual Input')
             cp = st.sidebar.slider('Chest pain type', 1,4,2)
             if cp == 1.0:
@@ -102,7 +102,7 @@ def heart():
             features = pd.DataFrame(data, index=[0])
             return features
     
-    input_df = user_input_features()
+    input_df = user_input_features1()
     img = Image.open("heart-disease.jpg")
     st.image(img, width=500)
     if st.sidebar.button('Predict!'):
