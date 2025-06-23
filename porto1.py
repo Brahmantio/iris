@@ -112,7 +112,7 @@ def heart():
             prediction = loaded_model.predict(df)        
             result = ['No Heart Disease' if prediction == 0 else 'Yes Heart Disease']
      st.subheader('Prediction: ')
-            output = str(result[0])
+     output = str(result[0])
      with st.spinner('Wait for it...'):
             time.sleep(4)
             st.success(f"Prediction of this app is {output}")
