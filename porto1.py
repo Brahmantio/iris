@@ -45,7 +45,7 @@ def iris():
         st.write(input_df)
         with open('model_iris.pkl', 'rb') as file:  
                 loaded_model = pickle.load(file)
-                prediction = loaded_model.predict(features)
+                prediction = loaded_model.predict(input_df)
         result = ['Iris-setosa' if prediction == 0 else ('Iris-versicolor' if prediction == 1 else 'Iris-virginica')]
         st.subheader('Prediction: ')
         output = str(result[0])
