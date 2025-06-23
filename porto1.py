@@ -46,7 +46,7 @@ def iris():
         with open('model_iris.pkl', 'rb') as file:  
                 loaded_model = pickle.load(file)
                 prediction = loaded_model.predict(input_df)
-                    result = ['Iris-setosa' if prediction == 0 else ('Iris-versicolor' if prediction == 1 else 'Iris-virginica')]
+                result = ['Iris-setosa' if prediction == 0 else ('Iris-versicolor' if prediction == 1 else 'Iris-virginica')]
         st.subheader('Prediction: ')
         output = str(result[0])
         with st.spinner('Wait for it...'):
@@ -110,7 +110,7 @@ def heart():
      with open('generate_heart_disease.pkl', 'rb') as file:  
             loaded_model = pickle.load(file)
             prediction = loaded_model.predict(df)        
-                result = ['No Heart Disease' if prediction == 0 else 'Yes Heart Disease']
+            result = ['No Heart Disease' if prediction == 0 else 'Yes Heart Disease']
         st.subheader('Prediction: ')
         output = str(result[0])
      with st.spinner('Wait for it...'):
