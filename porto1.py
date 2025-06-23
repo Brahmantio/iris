@@ -48,10 +48,10 @@ def iris():
                 prediction = loaded_model.predict(input_df)
                 result = ['Iris-setosa' if prediction == 0 else ('Iris-versicolor' if prediction == 1 else 'Iris-virginica')]
         st.subheader('Prediction: ')
-            output = str(result[0])
+                output = str(result[0])
         with st.spinner('Wait for it...'):
-            time.sleep(4)
-            st.success(f"Prediction of this app is {output}")
+                time.sleep(4)
+                st.success(f"Prediction of this app is {output}")
             
 def heart():
     st.write("""
