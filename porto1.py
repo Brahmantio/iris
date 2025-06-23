@@ -42,10 +42,10 @@ def iris():
     img = Image.open("iris.JPG")
     st.image(img, width=500)
     if st.sidebar.button('Predict!'):
-        st.write(input_df)
+        st.write(features)
         with open('model_iris.pkl', 'rb') as file:  
                 loaded_model = pickle.load(file)
-                prediction = loaded_model.predict(input_df)
+                prediction = loaded_model.predict(features)
         result = ['Iris-setosa' if prediction == 0 else ('Iris-versicolor' if prediction == 1 else 'Iris-virginica')]
         st.subheader('Prediction: ')
         output = str(result[0])
@@ -106,10 +106,10 @@ def heart():
     st.image(img, width=500)
     if st.sidebar.button('Predict!'):
         df = input_df
-        st.write(features)
+        st.write(df)
         with open('generate_heart_disease.pkl', 'rb') as file:  
                 loaded_model = pickle.load(file)
-                prediction = loaded_model.predict(features)        
+                prediction = loaded_model.predict(df)        
         result = ['No Heart Disease' if prediction == 0 else 'Yes Heart Disease']
         st.subheader('Prediction: ')
         output = str(result[0])
@@ -118,6 +118,6 @@ def heart():
                 st.success(f"Prediction of this app is {output}")
 
 if add_selectitem == "Iris species!":
-        iris()
+    iris()
 elif add_selectitem == "Heart Disease!":
-        heart()
+    heart()
