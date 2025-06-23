@@ -42,7 +42,7 @@ def iris():
     img = Image.open("iris.JPG")
     st.image(img, width=500)
     if st.sidebar.button('Predict!'):
-        st.write(features)
+        st.write(input_df)
         with open('model_iris.pkl', 'rb') as file:  
                 loaded_model = pickle.load(file)
                 prediction = loaded_model.predict(features)
