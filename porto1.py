@@ -46,9 +46,6 @@ def iris():
         with open('model_iris.pkl', 'rb') as file:  
             model = pickle.load(file)
             prediction = model.predict(input_df)
-            except FileNotFoundError:
-                st.error("Model file tidak ditemukan. Pastikan 'model_iris.pkl' ada di direktori.")
-                return
             result = ['Iris-setosa' if prediction == 0 else ('Iris-versicolor' if prediction == 1 else 'Iris-virginica')]
         st.subheader('Prediction: ')
         output = str(result[0])
