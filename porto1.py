@@ -43,7 +43,7 @@ def iris():
     st.image(img, width=500)
     if st.sidebar.button('Predict!'):
         with open("model_iris.pkl", 'rb') as file:  
-            model = pickle.load(file)
+                model = pickle.load(file)
             prediction = model.predict(input_df)
             result = ['Iris-setosa' if prediction == 0 else ('Iris-versicolor' if prediction == 1 else 'Iris-virginica')]
         st.subheader('Prediction: ')
