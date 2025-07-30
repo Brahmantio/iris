@@ -108,11 +108,12 @@ def heart():
             model = pickle.load(file)
             prediction = model.predict(input_df)        
             result = ['No Heart Disease' if prediction == 0 else 'Yes Heart Disease']
-     st.subheader('Prediction: ')
-     output = str(result[0])
-     with st.spinner('Wait for it...'):
-        time.sleep(4)
-        st.success(f"Prediction of this app is {output}")
+        st.subheader('Prediction: ')
+        output = str(result[0])
+        with st.spinner('Wait for it...'):
+            time.sleep(4)
+            st.success(f"Prediction of this app is {output}")
+         
 if add_selectitem == "Iris species!":
     iris()
 elif add_selectitem == "Heart Disease!":
