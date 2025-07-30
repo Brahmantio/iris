@@ -106,7 +106,7 @@ def heart():
     if st.sidebar.button('Predict!'):
      df = input_df
      st.write(df)
-     with open('generate_heart_disease.pkl', 'rb') as file:  
+     with open('modelheart.pkl', 'rb') as file:  
             loaded_model = pickle.load(file)
             prediction = loaded_model.predict(df)        
             result = ['No Heart Disease' if prediction == 0 else 'Yes Heart Disease']
