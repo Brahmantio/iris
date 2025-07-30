@@ -111,8 +111,8 @@ def heart():
      st.subheader('Prediction: ')
      output = str(result[0])
      with st.spinner('Wait for it...'):
-            time.sleep(4)
-            st.success(f"Prediction of this app is {output}")
+        time.sleep(4)
+        st.success(f"Prediction of this app is {output}")
 if add_selectitem == "Iris species!":
     iris()
 elif add_selectitem == "Heart Disease!":
