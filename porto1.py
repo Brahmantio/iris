@@ -104,11 +104,9 @@ def heart():
     img = Image.open("heart-disease.jpg")
     st.image(img, width=500)
     if st.sidebar.button('Predict!'):
-     df = input_df
-     st.write(df)
-     with open('modelheart.pkl', 'rb') as file:  
-            loaded_model = pickle.load(file)
-            prediction = loaded_model.predict(df)        
+        with open("modelheart.pkl", 'rb') as file:  
+            model = pickle.load(file)
+            prediction = model.predict(input_df)        
             result = ['No Heart Disease' if prediction == 0 else 'Yes Heart Disease']
      st.subheader('Prediction: ')
      output = str(result[0])
