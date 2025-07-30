@@ -88,6 +88,8 @@ def heart():
             else:
                 sex = 1 
             age = st.sidebar.slider("Usia", 29, 77, 30)
+            trestbps = st.sidebar.slider ("Tingkat BPS Pasien", 94, 200, 94)
+            chol = st.sidebar.slider("Tingkat Kolesterol Pasien", 126, 564, 126)
             data = {'cp': cp,
                     'thalach': thalach,
                     'slope': slope,
@@ -96,7 +98,10 @@ def heart():
                     'ca':ca,
                     'thal':thal,
                     'sex': sex,
-                    'age':age}
+                    'age':age,
+                    'trestbps':trestbps,
+                    'chol':chol,
+                   }
             features = pd.DataFrame(data, index=[0])
             return features
     
