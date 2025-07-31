@@ -10,12 +10,13 @@ st.write("""
 
 
 """)
-add_selectitem = st.sidebar.selectbox("Want to open about?", ("Iris species!", "Heart Disease!"))
+add_selectitem = st.sidebar.selectbox("Want to open about?", ("Iris species", "Heart Disease"))
 
 def iris():
     st.write("""
-    Develop by [Bramantio](https://www.linkedin.com/in/brahmantio-w/)
-    
+    Hello my name is [Bramantio](https://www.linkedin.com/in/brahmantio-w/)
+    and I am passionate about uncovering insights through data. 
+    With a strong enthusiasm for data analysis, I enjoy transforming raw information into meaningful stories that drive better decision-making.
     Data obtained from the [iris dataset](https://www.kaggle.com/uciml/iris) by UCIML. 
     """)
     st.sidebar.header('User Input Features:')
