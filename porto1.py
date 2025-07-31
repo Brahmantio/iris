@@ -66,6 +66,12 @@ def heart():
     else:
         def user_input_features1():
             st.sidebar.header('Manual Input')
+            age = st.sidebar.slider("Usia", 29, 77, 30)
+            sex = st.sidebar.selectbox("Jenis Kelamin", ('Perempuan', 'Pria'))
+            if sex == "Perempuan":
+                sex = 0
+            else:
+                sex = 1 
             cp = st.sidebar.slider('Chest pain type', 1,4,2)
             if cp == 1.0:
                 wcp = "Nyeri dada tipe angina"
@@ -76,35 +82,29 @@ def heart():
             else:
                 wcp = "Nyeri dada yang tidak terkait dengan masalah jantung"
             st.sidebar.write("Jenis nyeri dada yang dirasakan oleh pasien", wcp)
-            thalach = st.sidebar.slider("Maximum heart rate achieved", 71, 202, 80)
-            slope = st.sidebar.slider("Kemiringan segmen ST pada elektrokardiogram (EKG)", 0, 2, 1)
-            oldpeak = st.sidebar.slider("Seberapa banyak ST segmen menurun atau depresi", 0.0, 6.2, 1.0)
-            exang = st.sidebar.slider("Exercise induced angina", 0, 1, 1)
-            ca = st.sidebar.slider("Number of major vessels", 0, 3, 1)
-            thal = st.sidebar.slider("Hasil tes thalium", 1, 3, 1)
-            sex = st.sidebar.selectbox("Jenis Kelamin", ('Perempuan', 'Pria'))
-            if sex == "Perempuan":
-                sex = 0
-            else:
-                sex = 1 
-            age = st.sidebar.slider("Usia", 29, 77, 30)
             trestbps = st.sidebar.slider ("Tingkat BPS Pasien", 94, 200, 94)
             chol = st.sidebar.slider("Tingkat Kolesterol Pasien", 126, 564, 126)
             fbs = st.sidebar.slider("Tingkat Kadar gula pasien", 0, 1, 0)
             restecg = st.sidebar.slider("EKG Pasien Saat Istirahat", 0, 2, 0)
-            data = {'cp': cp,
-                    'thalach': thalach,
-                    'slope': slope,
-                    'oldpeak': oldpeak,
-                    'exang': exang,
-                    'ca':ca,
-                    'thal':thal,
+            thalach = st.sidebar.slider("Maximum heart rate achieved", 71, 202, 80)
+            exang = st.sidebar.slider("Exercise induced angina", 0, 1, 1)
+            oldpeak = st.sidebar.slider("Seberapa banyak ST segmen menurun atau depresi", 0.0, 6.2, 1.0)
+            slope = st.sidebar.slider("Kemiringan segmen ST pada elektrokardiogram (EKG)", 0, 2, 1)
+            ca = st.sidebar.slider("Number of major vessels", 0, 3, 1)
+            thal = st.sidebar.slider("Hasil tes thalium", 1, 3, 1)
+            data = {'age':age,
                     'sex': sex,
-                    'age':age,
+                    'cp': cp,
                     'trestbps':trestbps,
                     'chol':chol,
                     'fbs':fbs,
                     'restecg':restecg,
+                    'thalach': thalach,
+                    'exang': exang,
+                    'oldpeak': oldpeak,
+                    'slope': slope,
+                    'ca':ca,
+                    'thal':thal,
                    }
             features = pd.DataFrame(data, index=[0])
             return features
