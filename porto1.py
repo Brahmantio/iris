@@ -7,14 +7,15 @@ from PIL import Image
 st.set_page_config(page_title="Halaman Modelling", layout="wide")
 st.write("""
 # Welcome to my portofolio Data Analyst
-
+Hello my name is [Bramantio](https://www.linkedin.com/in/brahmantio-w/) and I am passionate about uncovering insights through data. 
+With a strong enthusiasm for data analysis, I enjoy transforming raw information into meaningful stories that drive better decision-making.
 
 """)
 add_selectitem = st.sidebar.selectbox("Want to open about?", ("Iris species", "Heart Disease"))
 
 def iris():
     st.write("""
-    Hello my name is [Bramantio](https://www.linkedin.com/in/brahmantio-w/)
+    This app predicts the **Iris species**
     
     Data obtained from the [iris dataset](https://www.kaggle.com/uciml/iris) by UCIML. 
     """)
@@ -125,7 +126,7 @@ def heart():
             time.sleep(4)
             st.success(f"Prediction of this app is {output}")
          
-if add_selectitem == "Iris species!":
+if add_selectitem == "Iris species":
     iris()
-elif add_selectitem == "Heart Disease!":
+elif add_selectitem == "Heart Disease":
     heart()
