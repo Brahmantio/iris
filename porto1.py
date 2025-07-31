@@ -8,7 +8,7 @@ st.set_page_config(page_title="Halaman Modelling", layout="wide")
 st.write("""
 # Welcome to my portofolio Data Analyst
 Hello my name is [Bramantio](https://www.linkedin.com/in/brahmantio-w/) and I am passionate about uncovering insights through data. 
-With a strong enthusiasm for data analysis, I enjoy transforming raw information into meaningful stories that drive better decision-making.
+\n With a strong enthusiasm for data analysis, I enjoy transforming raw information into meaningful stories that drive better decision-making.
 
 """)
 add_selectitem = st.sidebar.selectbox("Want to open about?", ("Iris species", "Heart Disease"))
