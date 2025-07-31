@@ -90,6 +90,8 @@ def heart():
             age = st.sidebar.slider("Usia", 29, 77, 30)
             trestbps = st.sidebar.slider ("Tingkat BPS Pasien", 94, 200, 94)
             chol = st.sidebar.slider("Tingkat Kolesterol Pasien", 126, 564, 126)
+            fbs = st.sidebar.slider("Tingkat Kadar gula pasien", 0, 1, 0)
+            restecg = st.sidebar.slider("EKG Pasien Saat Istirahat", 0, 2, 0)
             data = {'cp': cp,
                     'thalach': thalach,
                     'slope': slope,
@@ -101,6 +103,8 @@ def heart():
                     'age':age,
                     'trestbps':trestbps,
                     'chol':chol,
+                    'fbs':fbs,
+                    'restecg':restecg,
                    }
             features = pd.DataFrame(data, index=[0])
             return features
