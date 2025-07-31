@@ -42,7 +42,8 @@ def iris():
     img = Image.open("iris.JPG")
     st.image(img, width=500)
     if st.sidebar.button('Predict!'):
-        with open("model_iris.pkl", 'rb') as file:  
+        with open("model_iris.pkl", 'rb') as file:
+            st.write(input_df)
             model = pickle.load(file)
             prediction = model.predict(input_df)
             result = ['Iris-setosa' if prediction == 0 else ('Iris-versicolor' if prediction == 1 else 'Iris-virginica')]
@@ -113,7 +114,8 @@ def heart():
     img = Image.open("heart-disease.jpg")
     st.image(img, width=500)
     if st.sidebar.button('Predict!'):
-        with open("modelheart.pkl", 'rb') as file:  
+        with open("modelheart.pkl", 'rb') as file:
+            st.write(input_df)
             model = pickle.load(file)
             prediction = model.predict(input_df)        
             result = ['No Heart Disease' if prediction == 0 else 'Yes Heart Disease']
