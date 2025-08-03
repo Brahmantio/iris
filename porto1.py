@@ -20,6 +20,8 @@ def house():
         the process of conducting final research at the end of the lecture, 
         \nwhich uses the support vector regression algorithm with parameters based on previous research to obtain optimal accuracy, namely 0.98 or 98% 
         """)
+        img = Image.open("rumah1.JPG")
+        st.image(img, width=500)
         st.sidebar.header('User Input Features:')
     
         # Collects user input features into dataframe
@@ -202,8 +204,6 @@ def house():
                     features['kualitas_infrastruktur'] = (features['sumber_air'] + features['jangkauan_internet'] + features['lebar_jalan'] + features['jarak_pusat_kota']) / 4
 
         input_df = user_input_features()
-        img = Image.open("rumah1.JPG")
-        st.image(img, width=500)
         if st.button('Predict Now!'):
                 with open('tesis.pkl','rb') as file:
                         st.write(input_df)
