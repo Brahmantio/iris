@@ -148,7 +148,7 @@ def house():
                 return features
                         
                     # Contoh encoding manual
-                    Kecamatan={'Lakasantri':0,'Mulyorejo':1,'Kertajaya':2,'Rungkut':3,'Karang Pilang':4,'Wiyung':5,'Sukolilo':6,
+                            Kecamatan={'Lakasantri':0,'Mulyorejo':1,'Kertajaya':2,'Rungkut':3,'Karang Pilang':4,'Wiyung':5,'Sukolilo':6,
                                'Kenjeran':7,'Tandes':8,'Tegalsari':9,'Tenggilis Mejoyo':10,'Gayungan':11,'Dukuh Pakis':12,'Sambikerep':13,
                                'Jambangan':14,'Gunung Anyar':15,'Pabean':16,'Bulak':17,'Wonocolo':18,'Wonokromo':19,'Sukomanunggal':20,
                                'Benowo':21,'Semampir':22,'Simokerto':23,'Pakal':24,'Krembangan':25,'Sawahan':26,'Tambaksari':27,'Genteng':28,
