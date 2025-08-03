@@ -24,10 +24,10 @@ def house():
     
         # Collects user input features into dataframe
         uploaded_file = st.sidebar.file_uploader("Upload your input CSV file", type=["csv"])
-                if uploaded_file is not None:
-                    input_df = pd.read_csv(uploaded_file)
-                else:
-                    def user_input_features():
+        if uploaded_file is not None:
+                input_df = pd.read_csv(uploaded_file)
+        else:
+                def user_input_features():
                     st.header("Input your specific data")
                     Cicilan= st.number_input("Cicilan perbulan",
                         min_value=0,
