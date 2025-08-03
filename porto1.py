@@ -186,22 +186,22 @@ def house():
                     features['jenis_perumahan'] = features['jenis_perumahan'].map(jenis_perumahan)
                     features['jarak_pusat_kota'] = features['jarak_pusat_kota'].map(jarak_pusat_kota)
 
-                    #membuat kategori baru dengan satuan tahunan
-                    features['tahun_bangun'] = pd.to_datetime(features['tahun_bangun'])
-                    features['tahunbangunan'] = features['tahun_bangun'].dt.year
-                    features['tahun_renovasi'] = pd.to_datetime(features['tahun_renovasi'])
-                    features['tahunrenovasi'] = features['tahun_renovasi'].dt.year
+                #membuat kategori baru dengan satuan tahunan
+                features['tahun_bangun'] = pd.to_datetime(features['tahun_bangun'])
+                features['tahunbangunan'] = features['tahun_bangun'].dt.year
+                features['tahun_renovasi'] = pd.to_datetime(features['tahun_renovasi'])
+                features['tahunrenovasi'] = features['tahun_renovasi'].dt.year
 
-                    #mengubah entri data yang lebih dari satu menjadi jumlah
-                    features['jumlah_fasilitas'] = features['fasilitas_perumahan'].apply(lambda x: len(str(x).split(',')))
+                #mengubah entri data yang lebih dari satu menjadi jumlah
+                features['jumlah_fasilitas'] = features['fasilitas_perumahan'].apply(lambda x: len(str(x).split(',')))
 
-                    # feature combination
-                    features['efisiensi_ruangan'] = features['luas_bangunan'] / features['luas_tanah']
-                    features['kualitas_bangunan'] = (features['kondisi_properti'] + features['material_bangunan'] + features['material_lantai'] + features['konsep_rumah']) / 4
-                    from datetime import datetime
-                    tahun_sekarang = datetime.now().year
-                    features['usia_bangunan'] = tahun_sekarang - features['tahunbangunan']
-                    features['kualitas_infrastruktur'] = (features['sumber_air'] + features['jangkauan_internet'] + features['lebar_jalan'] + features['jarak_pusat_kota']) / 4
+                # feature combination
+                features['efisiensi_ruangan'] = features['luas_bangunan'] / features['luas_tanah']
+                features['kualitas_bangunan'] = (features['kondisi_properti'] + features['material_bangunan'] + features['material_lantai'] + features['konsep_rumah']) / 4
+                from datetime import datetime
+                tahun_sekarang = datetime.now().year
+                features['usia_bangunan'] = tahun_sekarang - features['tahunbangunan']
+                features['kualitas_infrastruktur'] = (features['sumber_air'] + features['jangkauan_internet'] + features['lebar_jalan'] + features['jarak_pusat_kota']) / 4
 
         input_df = user_input_features()
         if st.button('Predict Now!'):
