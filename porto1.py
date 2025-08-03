@@ -14,7 +14,7 @@ Hello my name is [Bramantio](https://www.linkedin.com/in/brahmantio-w/) and I am
 """)
 add_selectitem = st.sidebar.selectbox("Want to open about?", ("House prediction","Iris species", "Heart disease"))
 
-    def house():
+def house():
         st.write("""
         This app predicts the **House Prediction at Surabaya**
         the process of conducting final research at the end of the lecture, 
