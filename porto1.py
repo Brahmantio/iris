@@ -208,7 +208,7 @@ def house():
                 with open('tesis.pkl','rb') as file:
                         st.write(input_df)
                         model = pickle.load(file)
-                        prediction1 = model.predict(features)
+                        prediction1 = model.predict(input_df)
                         prediction = np.expm1(prediction1)
                 with st.spinner('Wait for it...'):
                         time.sleep(4)
