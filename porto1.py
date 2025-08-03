@@ -33,7 +33,7 @@ def house():
                     st.header("Input your specific data")
                     Cicilan= st.number_input("Cicilan perbulan",
                         min_value=0,
-                        step=1000000000,
+                        step=1000000,
                         )
                     Kecamatan = st.selectbox('Kecamatan rumah anda:', 
                                    ['Lakasantri', 'Mulyorejo', 'Kertajaya', 'Rungkut', 'Karang Pilang',
