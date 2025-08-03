@@ -28,8 +28,6 @@ def house():
             input_df = pd.read_csv(uploaded_file)
         else:
             def user_input_features():
-                tab1, tab2 = st.tabs(["Start Prediction", "How to Use"])
-            with tab1:
                     st.header("Input your specific data")
                     Cicilan= st.number_input("Cicilan perbulan",
                         min_value=0,
@@ -240,12 +238,6 @@ def house():
          with st.spinner('Wait for it...'):
                  time.sleep(4)
                  st.success(f"Hasil prediksi: Rp{prediction[0]:,.2f}")
-         with tab2:
-            st.header("How to use this application")
-            st.write("1. Apabila ingin  memprediksi menggunakan file, pastikan file tersebut dalam format .csv dan seluruh atribut sama")
-            st.write("2. Supaya prediksi akurat, pastikan nilai yang diinput sudah benar atau sesuai dengan perhitungan")
-            st.write("3. Apabila sudah terisi sesuai dengan atribut, tekan tombol 'Predict Now!' untuk memulai")
-            st.write("4. Hasil output berupa keterangan nominal harga dalam satuan rupiah")
              
 def iris():
     st.write("""
