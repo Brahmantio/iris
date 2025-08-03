@@ -143,7 +143,7 @@ def house():
                             'jarak_pusat_kota':jarak_pusat_kota
                             }
                     features = pd.DataFrame([data])
-                        return features
+                    return features
                         
                     # Contoh encoding manual
                     Kecamatan={'Lakasantri':0,'Mulyorejo':1,'Kertajaya':2,'Rungkut':3,'Karang Pilang':4,'Wiyung':5,'Sukolilo':6,
