@@ -202,14 +202,14 @@ def house():
         st.image(img, width=500)
         if st.button('Predict Now!'):
                     #model_loc = '/mount/src/course/modeldqlab.pkl'
-        with open('tesis.pkl','rb') as file:
-                st.write(features)
-                model = pickle.load(file)
-                prediction1 = model.predict(features)
-                prediction = np.expm1(prediction1)
-        with st.spinner('Wait for it...'):
-                time.sleep(4)
-                st.success(f"Hasil prediksi: Rp{prediction[0]:,.2f}")
+                with open('tesis.pkl','rb') as file:
+                        st.write(features)
+                        model = pickle.load(file)
+                        prediction1 = model.predict(features)
+                        prediction = np.expm1(prediction1)
+                with st.spinner('Wait for it...'):
+                        time.sleep(4)
+                        st.success(f"Hasil prediksi: Rp{prediction[0]:,.2f}")
              
 def iris():
     st.write("""
