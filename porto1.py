@@ -198,8 +198,8 @@ def house():
                     tahun_sekarang = datetime.now().year
                     features['usia_bangunan'] = tahun_sekarang - features['tahunbangunan']
                     features['kualitas_infrastruktur'] = (features['sumber_air'] + features['jangkauan_internet'] + features['lebar_jalan'] + features['jarak_pusat_kota']) / 4
-                img = Image.open("rumah1.JPG")
-                st.image(img, width=500)
+        img = Image.open("rumah1.JPG")
+        st.image(img, width=500)
                 if st.button('Predict Now!'):
                     #model_loc = '/mount/src/course/modeldqlab.pkl'
                  with open('tesis.pkl','rb') as file:
