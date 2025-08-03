@@ -96,7 +96,7 @@ def house():
                         value=1)
                     ruang_makan=st.radio("Ketersediaan ruang makan",["Tersedia","Tidak tersedia"])
                     ruang_tamu=st.radio("Ketersediaan ruang tamu",["Tersedia","Tidak tersedia"])
-                    kondisi_perabotan=st.radio("Kondisi fungsional rumah",["Unfurnised","Semi furnished","furnished"])
+                    kondisi_perabotan=st.radio("Kondisi fungsional rumah",["Unfurnished","Semi furnished","furnished"])
                     material_bangunan=st.radio("material bangunan",["Batako","Bata Hebel","Bata Merah","Beton"])
                     material_lantai=st.radio("material lantai",["Granit","Keramik","Marmer","Ubin"])
                     hadap=st.radio("Arah rumah",["Barat","Timur","Utara","Selatan"])
