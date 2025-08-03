@@ -148,60 +148,60 @@ def house():
                     return features
                         
                             # Contoh encoding manual
-                        Kecamatan={'Lakasantri':0,'Mulyorejo':1,'Kertajaya':2,'Rungkut':3,'Karang Pilang':4,'Wiyung':5,'Sukolilo':6,
+                    Kecamatan={'Lakasantri':0,'Mulyorejo':1,'Kertajaya':2,'Rungkut':3,'Karang Pilang':4,'Wiyung':5,'Sukolilo':6,
                                'Kenjeran':7,'Tandes':8,'Tegalsari':9,'Tenggilis Mejoyo':10,'Gayungan':11,'Dukuh Pakis':12,'Sambikerep':13,
                                'Jambangan':14,'Gunung Anyar':15,'Pabean':16,'Bulak':17,'Wonocolo':18,'Wonokromo':19,'Sukomanunggal':20,
                                'Benowo':21,'Semampir':22,'Simokerto':23,'Pakal':24,'Krembangan':25,'Sawahan':26,'Tambaksari':27,'Genteng':28,
                                'Asemrowo':29,'Bubutan':30}
-                        Wilayah = {'Surabaya Barat':0, 'Surabaya Timur':1, 'Surabaya Selatan':2, 'Surabaya Utara':3}
-                        jenis_perumahan = {'Perumahan':0,'Perkampungan':1,'Samping Jalan':2}
-                        sertifikat = {'SHM':0,'SHGB':1,'SHP':2,'SHSRS':3,'PPJB':4,'Lainnya':5}
-                        kondisi_properti = {'Baru': 0, 'Bagus': 1, 'Perlu perbaikan': 2, 'Tidak layak':3}
-                        ruang_makan = {'Tersedia': 0, 'Tidak tersedia': 1}
-                        ruang_tamu = {'Tersedia': 0, 'Tidak tersedia': 1}
-                        kondisi_perabotan = {'Unfurnished': 0,'Semi furnished':1, 'furnished': 2}
-                        material_bangunan = {'Batako':0, 'Bata Hebel': 1, 'Bata Merah': 2,'Beton': 3}
-                        material_lantai = {'Granit': 0,'Keramik': 1, 'Marmer': 2, 'Ubin':3}
-                        hadap = {'Barat': 0, 'Timur': 1, 'Utara': 2, 'Selatan':3}
-                        konsep_rumah = {'Minimalist': 0, 'Kontemporer': 1, 'American Classic': 2,'Modern Glass House':3,'Mordern minimalist':4,'Scandinavian':5,'Pavilion':6,'Industrial':7}
-                        pemandangan = {'Pemukiman Warga': 0, 'Perkotaan': 1,'Taman Kota':2}
-                        jangkauan_internet = {'Tersedia': 0, 'Tidak tersedia': 1, 'Sedang proses':2}
-                        sumber_air = {'PDAM': 0, 'Air sumur':1, 'PAM': 2}
-                        jarak_pusat_kota = {'< 5 KM': 0, '5 KM': 1, '> 5KM': 2}
+                    Wilayah = {'Surabaya Barat':0, 'Surabaya Timur':1, 'Surabaya Selatan':2, 'Surabaya Utara':3}
+                    jenis_perumahan = {'Perumahan':0,'Perkampungan':1,'Samping Jalan':2}
+                    sertifikat = {'SHM':0,'SHGB':1,'SHP':2,'SHSRS':3,'PPJB':4,'Lainnya':5}
+                    kondisi_properti = {'Baru': 0, 'Bagus': 1, 'Perlu perbaikan': 2, 'Tidak layak':3}
+                    ruang_makan = {'Tersedia': 0, 'Tidak tersedia': 1}
+                    ruang_tamu = {'Tersedia': 0, 'Tidak tersedia': 1}
+                    kondisi_perabotan = {'Unfurnished': 0,'Semi furnished':1, 'furnished': 2}
+                    material_bangunan = {'Batako':0, 'Bata Hebel': 1, 'Bata Merah': 2,'Beton': 3}
+                    material_lantai = {'Granit': 0,'Keramik': 1, 'Marmer': 2, 'Ubin':3}
+                    hadap = {'Barat': 0, 'Timur': 1, 'Utara': 2, 'Selatan':3}
+                    konsep_rumah = {'Minimalist': 0, 'Kontemporer': 1, 'American Classic': 2,'Modern Glass House':3,'Mordern minimalist':4,'Scandinavian':5,'Pavilion':6,'Industrial':7}
+                    pemandangan = {'Pemukiman Warga': 0, 'Perkotaan': 1,'Taman Kota':2}
+                    jangkauan_internet = {'Tersedia': 0, 'Tidak tersedia': 1, 'Sedang proses':2}
+                    sumber_air = {'PDAM': 0, 'Air sumur':1, 'PAM': 2}
+                    jarak_pusat_kota = {'< 5 KM': 0, '5 KM': 1, '> 5KM': 2}
 
-                        features['Kecamatan'] = features['Kecamatan'].map(Kecamatan)
-                        features['Wilayah'] = features['Wilayah'].map(Wilayah)
-                        features['sertifikat'] = features['sertifikat'].map(sertifikat)
-                        features['kondisi_properti'] = features['kondisi_properti'].map(kondisi_properti)
-                        features['ruang_makan'] = features['ruang_makan'].map(ruang_makan)
-                        features['ruang_tamu'] = features['ruang_tamu'].map(ruang_tamu)
-                        features['kondisi_perabotan'] = features['kondisi_perabotan'].map(kondisi_perabotan)
-                        features['material_bangunan'] = features['material_bangunan'].map(material_bangunan)
-                        features['material_lantai'] = features['material_lantai'].map(material_lantai)
-                        features['hadap'] = features['hadap'].map(hadap)
-                        features['konsep_rumah'] = features['konsep_rumah'].map(konsep_rumah)
-                        features['pemandangan'] = features['pemandangan'].map(pemandangan)
-                        features['jangkauan_internet'] = features['jangkauan_internet'].map(jangkauan_internet)
-                        features['sumber_air'] = features['sumber_air'].map(sumber_air)
-                        features['jenis_perumahan'] = features['jenis_perumahan'].map(jenis_perumahan)
-                        features['jarak_pusat_kota'] = features['jarak_pusat_kota'].map(jarak_pusat_kota)
+                    features['Kecamatan'] = features['Kecamatan'].map(Kecamatan)
+                    features['Wilayah'] = features['Wilayah'].map(Wilayah)
+                    features['sertifikat'] = features['sertifikat'].map(sertifikat)
+                    features['kondisi_properti'] = features['kondisi_properti'].map(kondisi_properti)
+                    features['ruang_makan'] = features['ruang_makan'].map(ruang_makan)
+                    features['ruang_tamu'] = features['ruang_tamu'].map(ruang_tamu)
+                    features['kondisi_perabotan'] = features['kondisi_perabotan'].map(kondisi_perabotan)
+                    features['material_bangunan'] = features['material_bangunan'].map(material_bangunan)
+                    features['material_lantai'] = features['material_lantai'].map(material_lantai)
+                    features['hadap'] = features['hadap'].map(hadap)
+                    features['konsep_rumah'] = features['konsep_rumah'].map(konsep_rumah)
+                    features['pemandangan'] = features['pemandangan'].map(pemandangan)
+                    features['jangkauan_internet'] = features['jangkauan_internet'].map(jangkauan_internet)
+                    features['sumber_air'] = features['sumber_air'].map(sumber_air)
+                    features['jenis_perumahan'] = features['jenis_perumahan'].map(jenis_perumahan)
+                    features['jarak_pusat_kota'] = features['jarak_pusat_kota'].map(jarak_pusat_kota)
 
-                        #membuat kategori baru dengan satuan tahunan
-                        features['tahun_bangun'] = pd.to_datetime(features['tahun_bangun'])
-                        features['tahunbangunan'] = features['tahun_bangun'].dt.year
-                        features['tahun_renovasi'] = pd.to_datetime(features['tahun_renovasi'])
-                        features['tahunrenovasi'] = features['tahun_renovasi'].dt.year
+                    #membuat kategori baru dengan satuan tahunan
+                    features['tahun_bangun'] = pd.to_datetime(features['tahun_bangun'])
+                    features['tahunbangunan'] = features['tahun_bangun'].dt.year
+                    features['tahun_renovasi'] = pd.to_datetime(features['tahun_renovasi'])
+                    features['tahunrenovasi'] = features['tahun_renovasi'].dt.year
 
-                        #mengubah entri data yang lebih dari satu menjadi jumlah
-                        features['jumlah_fasilitas'] = features['fasilitas_perumahan'].apply(lambda x: len(str(x).split(',')))
+                    #mengubah entri data yang lebih dari satu menjadi jumlah
+                    features['jumlah_fasilitas'] = features['fasilitas_perumahan'].apply(lambda x: len(str(x).split(',')))
 
-                        # feature combination
-                        features['efisiensi_ruangan'] = features['luas_bangunan'] / features['luas_tanah']
-                        features['kualitas_bangunan'] = (features['kondisi_properti'] + features['material_bangunan'] + features['material_lantai'] + features['konsep_rumah']) / 4
-                        from datetime import datetime
-                        tahun_sekarang = datetime.now().year
-                        features['usia_bangunan'] = tahun_sekarang - features['tahunbangunan']
-                        features['kualitas_infrastruktur'] = (features['sumber_air'] + features['jangkauan_internet'] + features['lebar_jalan'] + features['jarak_pusat_kota']) / 4
+                    # feature combination
+                    features['efisiensi_ruangan'] = features['luas_bangunan'] / features['luas_tanah']
+                    features['kualitas_bangunan'] = (features['kondisi_properti'] + features['material_bangunan'] + features['material_lantai'] + features['konsep_rumah']) / 4
+                    from datetime import datetime
+                    tahun_sekarang = datetime.now().year
+                    features['usia_bangunan'] = tahun_sekarang - features['tahunbangunan']
+                    features['kualitas_infrastruktur'] = (features['sumber_air'] + features['jangkauan_internet'] + features['lebar_jalan'] + features['jarak_pusat_kota']) / 4
 
         input_df = user_input_features()
         if st.button('Predict Now!'):
