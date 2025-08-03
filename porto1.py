@@ -30,12 +30,12 @@ def house():
             def user_input_features():
                 tab1, tab2 = st.tabs(["Start Prediction", "How to Use"])
             with tab1:
-            st.header("Input your specific data")
-            Cicilan= st.number_input("Cicilan perbulan",
+                    st.header("Input your specific data")
+                    Cicilan= st.number_input("Cicilan perbulan",
                         min_value=0,
                         step=1000000000,
                         )
-            Kecamatan = st.selectbox('Kecamatan rumah anda:', 
+                    Kecamatan = st.selectbox('Kecamatan rumah anda:', 
                                    ['Lakasantri', 'Mulyorejo', 'Kertajaya', 'Rungkut', 'Karang Pilang',
                                     'Wiyung', 'Sukolilo', 'Kenjeran', 'Tandes', 'Tegalsari',
                                     'Tenggilis Mejoyo', 'Gayungan', 'Dukuh Pakis', 'Sambikerep',
@@ -43,107 +43,107 @@ def house():
                                     'Wonokromo', 'Sukomanunggal', 'Benowo', 'Semampir', 'Simokerto',
                                     'Pakal', 'Krembangan', 'Sawahan', 'Tambaksari', 'Genteng',
                                     'Asemrowo', 'Bubutan'])
-            Wilayah= st.selectbox('Pilih Wilayah:', ['Surabaya Barat', 'Surabaya Timur', 'Surabaya Selatan',
+                    Wilayah= st.selectbox('Pilih Wilayah:', ['Surabaya Barat', 'Surabaya Timur', 'Surabaya Selatan',
                             'Surabaya Utara', 'Surabaya Pusat'])
-            jenis_perumahan= st.radio("Jenis Pemukiman rumah",
+                    jenis_perumahan= st.radio("Jenis Pemukiman rumah",
                         ["Perumahan", "Perkampungan", "Samping Jalan"])
-            kamar_tidur= st.slider("Jumlah kamar tidur",
+                    kamar_tidur= st.slider("Jumlah kamar tidur",
                         min_value=1,
                         max_value=10,
                         step=1,
                         value=1)
-            kamar_mandi= st.slider("Jumlah kamar mandi",
+                    kamar_mandi= st.slider("Jumlah kamar mandi",
                         min_value=1,
                         max_value=10,
                         step=1,
                         value=1)
-            luas_tanah= st.slider("Luas tanah",
+                    luas_tanah= st.slider("Luas tanah",
                         min_value=16,
                         max_value=5000,
                         step=1,
                         value=2)
-            luas_bangunan= st.slider("Luas bangunan",
+                    luas_bangunan= st.slider("Luas bangunan",
                         min_value=16,
                         max_value=2000,
                         step=1,
                         value=2)
-            Carport= st.slider("Jumlah muat mobil dihalaman",
+                    Carport= st.slider("Jumlah muat mobil dihalaman",
                         min_value=1,
                         max_value=10,
                         step=1,
                         value=1)
-            sertifikat= st.radio("Jenis kepemilikan sertifikat",['SHM', 'SHGB','SHP','SHSRS','PPJB', 'Lainnya'])
-            daya_listrik= st.slider("Daya listrik yang tersedia",
+                    sertifikat= st.radio("Jenis kepemilikan sertifikat",['SHM', 'SHGB','SHP','SHSRS','PPJB', 'Lainnya'])
+                    daya_listrik= st.slider("Daya listrik yang tersedia",
                         min_value=100,
                         max_value=66000,
                         step=100,
                         value=100)
-            jumlah_lantai= st.slider("jumlah lantai bangunan",
+                    jumlah_lantai= st.slider("jumlah lantai bangunan",
                         min_value=1,
                         max_value=5,
                         step=1,
                         value=1)
-            garasi= st.slider("Jumlah muat kendaraaan dalam garasi",
+                    garasi= st.slider("Jumlah muat kendaraaan dalam garasi",
                         min_value=0,
                         max_value=10,
                         step=1,
                         value=0)
-            kondisi_properti= st.radio("Tingkat kondisi properti",["Baru","Bagus","Perlu perbaikan","Tidak layak"])
-            Dapur = st.slider("Jumlah dapur yang tersedia",
+                    kondisi_properti= st.radio("Tingkat kondisi properti",["Baru","Bagus","Perlu perbaikan","Tidak layak"])
+                    Dapur = st.slider("Jumlah dapur yang tersedia",
                         min_value=1,
                         max_value=4,
                         step=1,
                         value=1)
-            ruang_makan=st.radio("Ketersediaan ruang makan",["Tersedia","Tidak tersedia"])
-            ruang_tamu=st.radio("Ketersediaan ruang tamu",["Tersedia","Tidak tersedia"])
-            kondisi_perabotan=st.radio("Kondisi fungsional rumah",["Unfurnised","Semi furnished","furnished"])
-            material_bangunan=st.radio("material bangunan",["Batako","Bata Hebel","Bata Merah","Beton"])
-            material_lantai=st.radio("material lantai",["Granit","Keramik","Marmer","Ubin"])
-            hadap=st.radio("Arah rumah",["Barat","Timur","Utara","Selatan"])
-            konsep_rumah=st.selectbox('Konsep rumah', ['Modern Glass House', 'Modern', 'Scandinavian', 'Old', 'Mordern minimalist',
+                    ruang_makan=st.radio("Ketersediaan ruang makan",["Tersedia","Tidak tersedia"])
+                    ruang_tamu=st.radio("Ketersediaan ruang tamu",["Tersedia","Tidak tersedia"])
+                    kondisi_perabotan=st.radio("Kondisi fungsional rumah",["Unfurnised","Semi furnished","furnished"])
+                    material_bangunan=st.radio("material bangunan",["Batako","Bata Hebel","Bata Merah","Beton"])
+                    material_lantai=st.radio("material lantai",["Granit","Keramik","Marmer","Ubin"])
+                    hadap=st.radio("Arah rumah",["Barat","Timur","Utara","Selatan"])
+                    konsep_rumah=st.selectbox('Konsep rumah', ['Modern Glass House', 'Modern', 'Scandinavian', 'Old', 'Mordern minimalist',
                                 'Minimalist', 'American Classic', 'Classic','Kontemporer', 'Pavilion','Industrial'])
-            pemandangan=st.radio("Pemandangan sekitar",["Pemukiman Warga","Perkotaan","Taman Kota"])
-            jangkauan_internet=st.radio("Jangkauan Internet",["Tersedia","Tidak tersedia","Sedang Proses"])
-            lebar_jalan=st.slider("Lebar jalan memuat berapa kendaraan",
+                    pemandangan=st.radio("Pemandangan sekitar",["Pemukiman Warga","Perkotaan","Taman Kota"])
+                    jangkauan_internet=st.radio("Jangkauan Internet",["Tersedia","Tidak tersedia","Sedang Proses"])
+                    lebar_jalan=st.slider("Lebar jalan memuat berapa kendaraan",
                         min_value=1,
                         max_value=4,
                         step=1,
                         value=1)
-            tahun_bangun=st.date_input('Tahun rumah dibangun')
-            tahun_renovasi=st.date_input('Tahun renovasi rumah')
-            fasilitas_perumahan=st.multiselect('Fasilitas yang dimiliki', ['Akses parkir','Masjid','Gereja','Taman','Keamanan','One gate system','Kolam renang','Laundry','CCTV'])
-            jarak_pusat_kota=st.radio("Berapa jauh jarak dari rumah ke pusat kota",["< 5 KM","5 KM","> 5KM"])
-            data = {'Cicilan':Cicilan,
-                    'Kecamatan':Kecamatan,
-                    'Wilayah':Wilayah,
-                    'jenis_perumahan':jenis_perumahan,
-                    'kamar_tidur':kamar_tidur,
-                    'kamar_mandi':kamar_mandi,
-                    'luas_tanah':luas_tanah,
-                    'luas_bangunan':luas_bangunan,
-                    'Carport':Carport,
-                    'sertifikat':sertifikat,
-                    'daya_listrik':daya_listrik,
-                    'jumlah_lantai':jumlah_lantai,
-                    'garasi':garasi,
-                    'kondisi_properti':kondisi_properti,
-                    'Dapur':Dapur,
-                    'ruang_makan':ruang_makan,
-                    'ruang_tamu':ruang_makan,
-                    'kondisi_perabotan':kondisi_perabotan,
-                    'material_bangunan':material_bangunan,
-                    'material_lantai':material_lantai,
-                    'hadap':hadap,
-                    'konsep_rumah':konsep_rumah,
-                    'pemandangan':pemandangan,
-                    'jangkauan_internet':jangkauan_internet,
-                    'lebar_jalan':lebar_jalan,
-                    'sumber_air':'PDAM',        
-                    'tahun_bangun':tahun_bangun,
-                    'tahun_renovasi':tahun_renovasi,
-                    'fasilitas_perumahan':fasilitas_perumahan,
-                    'jarak_pusat_kota':jarak_pusat_kota
-                    }
+                    tahun_bangun=st.date_input('Tahun rumah dibangun')
+                    tahun_renovasi=st.date_input('Tahun renovasi rumah')
+                    fasilitas_perumahan=st.multiselect('Fasilitas yang dimiliki', ['Akses parkir','Masjid','Gereja','Taman','Keamanan','One gate system','Kolam renang','Laundry','CCTV'])
+                    jarak_pusat_kota=st.radio("Berapa jauh jarak dari rumah ke pusat kota",["< 5 KM","5 KM","> 5KM"])
+                    data = {'Cicilan':Cicilan,
+                            'Kecamatan':Kecamatan,
+                            'Wilayah':Wilayah,
+                            'jenis_perumahan':jenis_perumahan,
+                            'kamar_tidur':kamar_tidur,
+                            'kamar_mandi':kamar_mandi,
+                            'luas_tanah':luas_tanah,
+                            'luas_bangunan':luas_bangunan,
+                            'Carport':Carport,
+                            'sertifikat':sertifikat,
+                            'daya_listrik':daya_listrik,
+                            'jumlah_lantai':jumlah_lantai,
+                            'garasi':garasi,
+                            'kondisi_properti':kondisi_properti,
+                            'Dapur':Dapur,
+                            'ruang_makan':ruang_makan,
+                            'ruang_tamu':ruang_makan,
+                            'kondisi_perabotan':kondisi_perabotan,
+                            'material_bangunan':material_bangunan,
+                            'material_lantai':material_lantai,
+                            'hadap':hadap,
+                            'konsep_rumah':konsep_rumah,
+                            'pemandangan':pemandangan,
+                            'jangkauan_internet':jangkauan_internet,
+                            'lebar_jalan':lebar_jalan,
+                            'sumber_air':'PDAM',        
+                            'tahun_bangun':tahun_bangun,
+                            'tahun_renovasi':tahun_renovasi,
+                            'fasilitas_perumahan':fasilitas_perumahan,
+                            'jarak_pusat_kota':jarak_pusat_kota
+                            }
             features = pd.DataFrame([data])
             # Contoh encoding manual
             Kecamatan={'Lakasantri':0, 
