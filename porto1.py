@@ -143,6 +143,8 @@ def house():
                             'jarak_pusat_kota':jarak_pusat_kota
                             }
                     features = pd.DataFrame([data])
+                        return features
+                        
                     # Contoh encoding manual
                     Kecamatan={'Lakasantri':0,'Mulyorejo':1,'Kertajaya':2,'Rungkut':3,'Karang Pilang':4,'Wiyung':5,'Sukolilo':6,
                                'Kenjeran':7,'Tandes':8,'Tegalsari':9,'Tenggilis Mejoyo':10,'Gayungan':11,'Dukuh Pakis':12,'Sambikerep':13,
@@ -198,13 +200,13 @@ def house():
                     tahun_sekarang = datetime.now().year
                     features['usia_bangunan'] = tahun_sekarang - features['tahunbangunan']
                     features['kualitas_infrastruktur'] = (features['sumber_air'] + features['jangkauan_internet'] + features['lebar_jalan'] + features['jarak_pusat_kota']) / 4
-                    
+
+        input_df = user_input_features()
         img = Image.open("rumah1.JPG")
         st.image(img, width=500)
         if st.button('Predict Now!'):
-                    #model_loc = '/mount/src/course/modeldqlab.pkl'
                 with open('tesis.pkl','rb') as file:
-                        st.write(features)
+                        st.write(input_df)
                         model = pickle.load(file)
                         prediction1 = model.predict(features)
                         prediction = np.expm1(prediction1)
