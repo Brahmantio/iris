@@ -24,10 +24,10 @@ def house():
     
         # Collects user input features into dataframe
         uploaded_file = st.sidebar.file_uploader("Upload your input CSV file", type=["csv"])
-        if uploaded_file is not None:
-            input_df = pd.read_csv(uploaded_file)
-        else:
-            def user_input_features():
+                if uploaded_file is not None:
+                    input_df = pd.read_csv(uploaded_file)
+                else:
+                    def user_input_features():
                     st.header("Input your specific data")
                     Cicilan= st.number_input("Cicilan perbulan",
                         min_value=0,
@@ -198,6 +198,7 @@ def house():
                     tahun_sekarang = datetime.now().year
                     features['usia_bangunan'] = tahun_sekarang - features['tahunbangunan']
                     features['kualitas_infrastruktur'] = (features['sumber_air'] + features['jangkauan_internet'] + features['lebar_jalan'] + features['jarak_pusat_kota']) / 4
+                    
         img = Image.open("rumah1.JPG")
         st.image(img, width=500)
         if st.button('Predict Now!'):
