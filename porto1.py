@@ -196,7 +196,8 @@ def house():
                     tahun_sekarang = datetime.now().year
                     features['usia_bangunan'] = tahun_sekarang - features['tahunbangunan']
                     features['kualitas_infrastruktur'] = (features['sumber_air'] + features['jangkauan_internet'] + features['lebar_jalan'] + features['jarak_pusat_kota']) / 4
-
+                    return features
+                        
         input_df = user_input_features()
         if st.button('Predict Now!'):
                 with open('tesis.pkl','rb') as file:
