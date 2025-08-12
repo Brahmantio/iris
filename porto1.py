@@ -218,7 +218,7 @@ def palm():
         st.write("Submit gambar kelapa sawit yang anda miliki, kemudian model akan mengklasifikasikan gambar antara Belum Matang, Matang, atau Terlalu Matang")
 
         # Load model
-        model = load_model("kelapasawit_model.h5")
+        model = load_model("kelapasawit_model.h5",compile=False)
 
         # Upload file
         uploaded_file = st.file_uploader("Upload Gambar", type=["jpg", "png", "jpeg"])
