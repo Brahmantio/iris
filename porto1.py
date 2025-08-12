@@ -224,28 +224,29 @@ def palm():
         uploaded_file = st.file_uploader("Upload Gambar", type=["jpg", "png", "jpeg"])
 
         if uploaded_file is not None:
-                # Tampilkan gambar
-                st.image(uploaded_file, caption="Gambar yang diunggah", use_column_width=True)
+            # tampilkan
+            img_pil = Image.open(uploaded_file).convert("RGB")
+            st.image(img_pil, caption="Gambar yang diunggah", use_column_width=True)
 
-                # Proses gambar
-                img = image.load_img(uploaded_file, target_size=(224, 224))
-                img_array = image.img_to_array(img)
-                img_array = np.expand_dims(img_array, axis=0)
-                img_array = preprocess_input(img_array)
+            # resize & preprocess
+            img_resized = img_pil.resize((224, 224))
+            img_array = np.array(img_resized).astype("float32")    # (224,224,3)
+            img_pre = preprocess_input(img_array)                  # sama seperti training
+            img_batch = np.expand_dims(img_pre, axis=0)            # (1,224,224,3)
 
-                # Prediksi
-                preds = model.predict(img_array)
-                predicted_class = np.argmax(preds, axis=1)
+             # Prediksi
+             preds = model.predict(img_array)
+             predicted_class = np.argmax(preds, axis=1)
     
-                # Mapping kelas ke label
-                label_mapping = {
+             # Mapping kelas ke label
+             label_mapping = {
                 0: "Belum Matang",
                 1: "Matang",
                 2: "Terlalu Matang"
                 }
-                label_prediksi = label_mapping[predicted_class[0]]
+             label_prediksi = label_mapping[predicted_class[0]]
 
-                st.write(f"Hasil Prediksi: {label_prediksi}")
+             st.write(f"Hasil Prediksi: {label_prediksi}")
 
 def iris():
     st.write("""
