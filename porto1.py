@@ -216,15 +216,34 @@ def house():
                         st.success(f"Hasil prediksi: Rp{prediction[0]:,.2f}")
                         
 def palm():
+        # path model (pastikan file ada di folder project)
+        MODEL_PATH = os.path.join(os.getcwd(), "sawit_model.keras")
+
+        st.title("Implementasi CNN - Kematangan Kelapa Sawit")
+
+        @st.cache_resource
+        def load_model_cached(path=MODEL_PATH):
+            try:
+                m = load_model(path, compile=False)   # compile=False untuk inference
+                return m
+            except Exception as e:
+                # tampilkan error loading model supaya mudah debug deploy
+                st.error(f"Gagal load model: {e}")
+                raise
+
+        # load model (sekali saja)
+        model = load_model_cached()
+
+        # Debug info ringan (bisa di-comment setelah oke)
+        st.write("Model inputs:", model.inputs)
+        st.write("Model input shapes:", [tuple(i.shape.as_list()) for i in model.inputs])
+        st.write("Jumlah input model:", len(model.inputs))
+
         st.header("Implementasi Convolutional Neural Network untuk Identifikasi Tingkat Kematangan Buah Kelapa Sawit")
-        st.write("Dataset yang digunakan berasal dari [kaggle](https://www.kaggle.com/datasets/ramadanizikri112/ripeness-of-oil-palm-fruit)")
-        st.write("Submit gambar kelapa sawit yang anda miliki, kemudian model akan mengklasifikasikan gambar antara Belum Matang, Matang, atau Terlalu Matang")
+        st.write("Dataset: contoh dari Kaggle")
+        st.write("Submit gambar, model akan mengklasifikasikan: Belum Matang / Matang / Terlalu Matang")
 
-        # Load model
-        model = load_model("sawit_model.keras",compile=False)
-
-        # Upload file
-        uploaded_file = st.file_uploader("Upload Gambar", type=["jpg", "png", "jpeg"])
+        uploaded_file = st.file_uploader("Upload Gambar", type=["jpg", "jpeg", "png"])
 
         if uploaded_file is not None:
             # tampilkan
@@ -237,19 +256,28 @@ def palm():
             img_pre = preprocess_input(img_array)                  # sama seperti training
             img_batch = np.expand_dims(img_pre, axis=0)            # (1,224,224,3)
 
-             # Prediksi
-             preds = model.predict(img_array)
-             predicted_class = np.argmax(preds, axis=1)
-    
-             # Mapping kelas ke label
-             label_mapping = {
-                0: "Belum Matang",
-                1: "Matang",
-                2: "Terlalu Matang"
-                }
-             label_prediksi = label_mapping[predicted_class[0]]
-
-             st.write(f"Hasil Prediksi: {label_prediksi}")
+            # safety check sebelum predict
+            if len(model.inputs) != 1:
+                st.error("Model terdeteksi memiliki lebih dari satu input. Periksa ulang arsitektur/model yang Anda load.")
+                st.write("Model inputs detail:", model.inputs)
+            else:
+                try:
+                    preds = model.predict(img_batch)
+                    pred_idx = int(np.argmax(preds, axis=1)[0])
+                    confidence = float(np.max(preds))
+                    # jika kamu punya label encoder disimpan, load itu. Kalau tidak, gunakan mapping:
+                    label_mapping = {0: "Belum Matang", 1: "Matang", 2: "Terlalu Matang"}
+                    label_pred = label_mapping.get(pred_idx, f"Kelas {pred_idx}")
+                    st.write(f"Hasil Prediksi: **{label_pred}** (confidence: {confidence:.3f})")
+                except Exception as e:
+                    st.error("Terjadi error saat inferensi:")
+                    st.write(e)
+                    # untuk debugging lebih lanjut:
+                    st.write("Model summary (singkat):")
+                    try:
+                        st.text(model.summary())
+                    except Exception:
+                        pass
 
 def iris():
     st.write("""
