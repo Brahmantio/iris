@@ -362,7 +362,7 @@ def heart():
          
 if add_selectitem == "House prediction":
     house()
-elif add_selection == "palm oil classification":
+elif add_selectitem == "palm oil classification":
      palm()
 elif add_selectitem == "Iris species":
     iris()
