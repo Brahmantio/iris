@@ -228,7 +228,7 @@ def palm():
                 st.image(uploaded_file, caption="Gambar yang diunggah", use_column_width=True)
 
                 # Proses gambar
-                img = image.load_img(uploaded_file)
+                img = image.load_img(uploaded_file, target_size=(224, 224, 3))
                 img_array = image.img_to_array(img)
                 img_array = np.expand_dims(img_array, axis=0)
                 img_array = preprocess_input(img_array)
