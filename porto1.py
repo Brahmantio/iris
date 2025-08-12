@@ -217,7 +217,10 @@ def house():
                         
 def palm():
         # path model (pastikan file ada di folder project)
-        MODEL_PATH = os.path.join(os.getcwd(), "sawit_model.keras", compile=False)
+       MODEL_PATH = os.path.join(os.getcwd(), "sawit_model.keras")
+
+        # Load model tanpa compile
+        model = tf.keras.models.load_model(MODEL_PATH, compile=False))
 
         st.title("Implementasi CNN - Kematangan Kelapa Sawit")
 
