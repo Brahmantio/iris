@@ -217,35 +217,35 @@ def palm():
         st.write("Dataset yang digunakan berasal dari [kaggle](https://www.kaggle.com/datasets/ramadanizikri112/ripeness-of-oil-palm-fruit)")
         st.write("Submit gambar kelapa sawit yang anda miliki, kemudian model akan mengklasifikasikan gambar antara Belum Matang, Matang, atau Terlalu Matang")
 
-        # Load model
-        model = load_model("/Users/bramantiow/Downloads/kelapasawit_model.h5")
+                # Load model
+                model = load_model("/Users/bramantiow/Downloads/kelapasawit_model.h5")
 
-        # Upload file
-        uploaded_file = st.file_uploader("Upload Gambar", type=["jpg", "png", "jpeg"])
+                # Upload file
+                uploaded_file = st.file_uploader("Upload Gambar", type=["jpg", "png", "jpeg"])
 
-        if uploaded_file is not None:
-            # Tampilkan gambar
-            st.image(uploaded_file, caption="Gambar yang diunggah", use_column_width=True)
+                if uploaded_file is not None:
+                    # Tampilkan gambar
+                    st.image(uploaded_file, caption="Gambar yang diunggah", use_column_width=True)
 
-            # Proses gambar
-            img = image.load_img(uploaded_file, target_size=(224, 224))
-            img_array = image.img_to_array(img)
-            img_array = np.expand_dims(img_array, axis=0)
-            img_array = preprocess_input(img_array)
+                    # Proses gambar
+                    img = image.load_img(uploaded_file, target_size=(224, 224))
+                    img_array = image.img_to_array(img)
+                    img_array = np.expand_dims(img_array, axis=0)
+                    img_array = preprocess_input(img_array)
 
-            # Prediksi
-            preds = model.predict(img_array)
-            predicted_class = np.argmax(preds, axis=1)
+                    # Prediksi
+                    preds = model.predict(img_array)
+                    predicted_class = np.argmax(preds, axis=1)
     
-            # Mapping kelas ke label
-            label_mapping = {
-            0: "Belum Matang",
-            1: "Matang",
-            2: "Terlalu Matang"
-            }
-            label_prediksi = label_mapping[predicted_class[0]]
+                    # Mapping kelas ke label
+                    label_mapping = {
+                    0: "Belum Matang",
+                    1: "Matang",
+                    2: "Terlalu Matang"
+                    }
+                    label_prediksi = label_mapping[predicted_class[0]]
 
-            st.write(f"Hasil Prediksi: {label_prediksi}")
+                    st.write(f"Hasil Prediksi: {label_prediksi}")
 
 def iris():
     st.write("""
