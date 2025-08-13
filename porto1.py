@@ -219,68 +219,70 @@ def palm():
         # path model (pastikan file ada di folder project)
         MODEL_PATH = os.path.join(os.getcwd(), "kelapasawit_model.h5")
 
-        # Load model tanpa compile
-        model = tf.keras.models.load_model(MODEL_PATH)
-
-        st.title("Implementasi CNN - Kematangan Kelapa Sawit")
+        # Cek keberadaan file model
+        if not os.path.exists(MODEL_PATH):
+            st.error(f"⚠️ Error: File model tidak ditemukan di lokasi: {MODEL_PATH}")
+            st.stop() # Hentikan aplikasi jika model tidak ada
 
         @st.cache_resource
-        def load_model_cached(path=MODEL_PATH):
+        def load_model_cached(path):
+            """
+            Memuat model Keras hanya sekali dan menyimpannya di cache.
+            """
             try:
-                m = load_model(path)
-                return m
+                model = load_model(path, compile=False)
+                return model
             except Exception as e:
-                # tampilkan error loading model supaya mudah debug deploy
-                st.error(f"Gagal load model: {e}")
-                raise
+                st.error(f"❌ Gagal memuat model: {e}")
+                st.error("Pastikan versi TensorFlow/Keras di lingkungan ini sama dengan saat model disimpan.")
+                st.stop()
 
-        # load model (sekali saja)
-        model = load_model_cached()
+        # --- Load model (hanya satu kali) ---
+        model = load_model_cached(MODEL_PATH)
+        model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 
-        # Debug info ringan (bisa di-comment setelah oke)
-        st.write("Model inputs:", model.inputs)
-        st.write("Model input shapes:", [tuple(i.shape.as_list()) for i in model.inputs])
-        st.write("Jumlah input model:", len(model.inputs))
-
+        st.title("Implementasi CNN - Kematangan Kelapa Sawit")
         st.header("Implementasi Convolutional Neural Network untuk Identifikasi Tingkat Kematangan Buah Kelapa Sawit")
         st.write("Dataset: contoh dari Kaggle")
         st.write("Submit gambar, model akan mengklasifikasikan: Belum Matang / Matang / Terlalu Matang")
 
+        # --- Debug info (opsional, bisa di-comment) ---
+        if st.checkbox("Tampilkan info debug"):
+            st.write("Model inputs:", model.inputs)
+            st.write("Model input shapes:", [tuple(i.shape.as_list()) for i in model.inputs])
+            st.write("Jumlah input model:", len(model.inputs))
+            st.write("Model summary (singkat):")
+            st.text(model.summary())
+
         uploaded_file = st.file_uploader("Upload Gambar", type=["jpg", "jpeg", "png"])
 
         if uploaded_file is not None:
-            # tampilkan
+            # Tampilkan gambar yang diunggah
             img_pil = Image.open(uploaded_file).convert("RGB")
             st.image(img_pil, caption="Gambar yang diunggah", use_column_width=True)
 
-            # resize & preprocess
+            # Preproses gambar
             img_resized = img_pil.resize((224, 224))
-            img_array = np.array(img_resized).astype("float32")    # (224,224,3)
-            img_pre = preprocess_input(img_array)                  # sama seperti training
-            img_batch = np.expand_dims(img_pre, axis=0)            # (1,224,224,3)
+            img_array = np.array(img_resized).astype("float32")
+            img_pre = preprocess_input(img_array)
+            img_batch = np.expand_dims(img_pre, axis=0)
 
-            # safety check sebelum predict
-            if len(model.inputs) != 1:
-                st.error("Model terdeteksi memiliki lebih dari satu input. Periksa ulang arsitektur/model yang Anda load.")
-                st.write("Model inputs detail:", model.inputs)
-            else:
-                try:
-                    preds = model.predict(img_batch)
-                    pred_idx = int(np.argmax(preds, axis=1)[0])
-                    confidence = float(np.max(preds))
-                    # jika kamu punya label encoder disimpan, load itu. Kalau tidak, gunakan mapping:
-                    label_mapping = {0: "Belum Matang", 1: "Matang", 2: "Terlalu Matang"}
-                    label_pred = label_mapping.get(pred_idx, f"Kelas {pred_idx}")
-                    st.write(f"Hasil Prediksi: **{label_pred}** (confidence: {confidence:.3f})")
-                except Exception as e:
-                    st.error("Terjadi error saat inferensi:")
-                    st.write(e)
-                    # untuk debugging lebih lanjut:
-                    st.write("Model summary (singkat):")
-                    try:
-                        st.text(model.summary())
-                    except Exception:
-                        pass
+            # --- Prediksi dan Tampilkan Hasil ---
+            try:
+                # Panggil predict
+                preds = model.predict(img_batch)
+                pred_idx = int(np.argmax(preds, axis=1)[0])
+                confidence = float(np.max(preds))
+
+                # Mapping label
+                label_mapping = {0: "Belum Matang", 1: "Matang", 2: "Terlalu Matang"}
+                label_pred = label_mapping.get(pred_idx, f"Kelas {pred_idx}")
+
+                st.success(f"Hasil Prediksi: **{label_pred}** (confidence: {confidence:.3f})")
+
+            except Exception as e:
+                st.error("Terjadi error saat inferensi. Cek input dan model.")
+                st.write(e)
 
 def iris():
     st.write("""
