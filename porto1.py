@@ -220,7 +220,7 @@ def palm():
         MODEL_PATH = os.path.join(os.getcwd(), "kelapasawit_model.h5")
 
         # Load model tanpa compile
-        model = tf.keras.models.load_model(MODEL_PATH, compile=False)
+        model = tf.keras.models.load_model(MODEL_PATH)
 
         st.title("Implementasi CNN - Kematangan Kelapa Sawit")
 
