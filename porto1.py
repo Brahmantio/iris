@@ -227,7 +227,7 @@ def palm():
         @st.cache_resource
         def load_model_cached(path=MODEL_PATH):
             try:
-                m = load_model(path, compile=False)   # compile=False untuk inference
+                m = load_model(path)
                 return m
             except Exception as e:
                 # tampilkan error loading model supaya mudah debug deploy
