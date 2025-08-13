@@ -202,7 +202,7 @@ def house():
                         
         input_df = user_input_features()
         if st.button('Predict Now!'):
-                with open("tesis.pkl",'rb') as file:
+                with open('tesis.pkl','rb') as file:
                         st.write(input_df)
                         model = pickle.load(file)
                         prediction1 = model.predict(input_df)
