@@ -18,7 +18,7 @@ Hello my name is [Bramantio](https://www.linkedin.com/in/brahmantio-w/) and I am
 \n With a strong enthusiasm for data analysis, I enjoy transforming raw information into meaningful stories that drive better decision-making.
 
 """)
-add_selectitem = st.sidebar.selectbox("Want to open about?", ("House prediction","palm oil classification","Iris species", "Heart disease"))
+add_selectitem = st.sidebar.selectbox("Want to open about?", ("House prediction","Iris species", "Heart disease"))
 
 def house():
         st.write("""
@@ -215,74 +215,6 @@ def house():
                         time.sleep(4)
                         st.success(f"Hasil prediksi: Rp{prediction[0]:,.2f}")
                         
-def palm():
-        # path model (pastikan file ada di folder project)
-        MODEL_PATH = os.path.join(os.getcwd(), "kelapasawit_model.h5")
-
-        # Cek keberadaan file model
-        if not os.path.exists(MODEL_PATH):
-            st.error(f"⚠️ Error: File model tidak ditemukan di lokasi: {MODEL_PATH}")
-            st.stop() # Hentikan aplikasi jika model tidak ada
-
-        @st.cache_resource
-        def load_model_cached(path):
-            """
-            Memuat model Keras hanya sekali dan menyimpannya di cache.
-            """
-            try:
-                model = load_model(path, compile=False)
-                return model
-            except Exception as e:
-                st.error(f"❌ Gagal memuat model: {e}")
-                st.error("Pastikan versi TensorFlow/Keras di lingkungan ini sama dengan saat model disimpan.")
-                st.stop()
-
-        # --- Load model (hanya satu kali) ---
-        model = load_model_cached(MODEL_PATH)
-        model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
-
-        st.title("Implementasi CNN - Kematangan Kelapa Sawit")
-        st.header("Implementasi Convolutional Neural Network untuk Identifikasi Tingkat Kematangan Buah Kelapa Sawit")
-        st.write("Dataset: contoh dari Kaggle")
-        st.write("Submit gambar, model akan mengklasifikasikan: Belum Matang / Matang / Terlalu Matang")
-
-        # --- Debug info (opsional, bisa di-comment) ---
-        if st.checkbox("Tampilkan info debug"):
-            st.write("Model inputs:", model.inputs)
-            st.write("Model input shapes:", [tuple(i.shape.as_list()) for i in model.inputs])
-            st.write("Jumlah input model:", len(model.inputs))
-            st.write("Model summary (singkat):")
-            st.text(model.summary())
-
-        uploaded_file = st.file_uploader("Upload Gambar", type=["jpg", "jpeg", "png"])
-
-        if uploaded_file is not None:
-            # Tampilkan gambar yang diunggah
-            img_pil = Image.open(uploaded_file).convert("RGB")
-            st.image(img_pil, caption="Gambar yang diunggah", use_column_width=True)
-
-            # Preproses gambar
-            img_resized = img_pil.resize((224, 224))
-            img_array = np.array(img_resized).astype("float32")
-            img_pre = preprocess_input(img_array)
-            img_batch = np.expand_dims(img_pre, axis=0)
-
-            # --- Prediksi dan Tampilkan Hasil ---
-            try:
-                # Panggil predict
-                preds = model.predict(img_batch)
-                pred_idx = int(np.argmax(preds, axis=1)[0])
-                confidence = float(np.max(preds))
-
-                # Mapping label
-                label_mapping = {0: "Belum Matang", 1: "Matang", 2: "Terlalu Matang"}
-                label_pred = label_mapping.get(pred_idx, f"Kelas {pred_idx}")
-
-                st.success(f"Hasil Prediksi: **{label_pred}** (confidence: {confidence:.3f})")
-
-            except Exception as e:
-                st.error("Terjadi error saat inferensi. Cek input dan model.")
-                st.write(e)
 
 def iris():
     st.write("""
@@ -399,8 +331,6 @@ def heart():
          
 if add_selectitem == "House prediction":
     house()
-elif add_selectitem == "palm oil classification":
-     palm()
 elif add_selectitem == "Iris species":
     iris()
 elif add_selectitem == "Heart disease":
