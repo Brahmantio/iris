@@ -2,8 +2,8 @@ streamlit
 pandas
 numpy
 scikit-learn
-tensorflow
-keras
+tensorflow==2.15.0
+keras==2.15.0
 h5py
 pillow
 opencv-python
