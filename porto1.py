@@ -539,7 +539,7 @@ if add_selectitem == "House prediction":
     house()
 elif add_selectitem == "Palm oil classification":
     palm()
-elif add_selectitem == "Iris species":
-    iris()
+elif add_selectitem == "Supermarket Profit":
+    profit()
 elif add_selectitem == "Heart disease":
     heart()
