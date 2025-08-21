@@ -425,7 +425,7 @@ def profit():
                         'Discount': Discount,
                             }
     
-        features = pd.DataFrame([input_data])
+                features = pd.DataFrame([input_data])
     
         # Lakukan semua langkah preprocessing yang sama seperti saat pelatihan
         #feature combination
