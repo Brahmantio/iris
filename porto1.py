@@ -427,14 +427,14 @@ def profit():
     
                 features = pd.DataFrame([input_data])
     
-        # Lakukan semua langkah preprocessing yang sama seperti saat pelatihan
-        #feature combination
-        features['revenue_item'] = features['Sales'] / features['Quantity']
+                # Lakukan semua langkah preprocessing yang sama seperti saat pelatihan
+                #feature combination
+                features['revenue_item'] = features['Sales'] / features['Quantity']
 
-        #log transform
-        features['Sales'] = np.log1p(features['Sales'])
-        features['Postal_code'] = np.log1p(features['Postal_code'])
-        features['revenue_item'] = np.log1p(features['revenue_item'])
+                #log transform
+                features['Sales'] = np.log1p(features['Sales'])
+                features['Postal_code'] = np.log1p(features['Postal_code'])
+                features['revenue_item'] = np.log1p(features['revenue_item'])
 
         # encoding
         from sklearn.preprocessing import LabelEncoder
