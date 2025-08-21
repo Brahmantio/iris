@@ -17,6 +17,7 @@ Hello my name is [Bramantio](https://www.linkedin.com/in/brahmantio-w/) and I am
 add_selectitem = st.sidebar.selectbox("Want to open about?", ("House prediction","Palm oil classification","Supermarket Profit", "Heart disease"))
 
 def house():
+        st.set_page_config(page_title="Prediksi Rumah Surabaya", layout="centered", initial_sidebar_state="auto", page_icon="🏡")
         st.write("""
         This app predicts the **House Prediction at Surabaya**
         the process of conducting final research at the end of the lecture, 
@@ -216,7 +217,8 @@ def palm():
         from tensorflow.keras.models import load_model
         from tensorflow.keras.preprocessing import image
         from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
-        
+
+        st.set_page_config(page_title="PT.Kelapa Sawit", layout="centered", initial_sidebar_state="auto", page_icon="🌰")
         st.header("Implementasi Convolutional Neural Network untuk Identifikasi Tingkat Kematangan Buah Kelapa Sawit")
         st.write("Dataset yang digunakan berasal dari [kaggle](https://www.kaggle.com/datasets/ramadanizikri112/ripeness-of-oil-palm-fruit)")
         st.write("Submit gambar kelapa sawit yang anda miliki, kemudian model akan mengklasifikasikan gambar antara Belum Matang, Matang, atau Terlalu Matang")
@@ -464,6 +466,7 @@ def profit():
                 
             
 def heart():
+    st.set_page_config(page_title="Penyakit Jantung", layout="centered", initial_sidebar_state="auto", page_icon="🫀")
     st.write("""
     This app predicts the **Heart Disease**
     
