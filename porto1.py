@@ -268,6 +268,7 @@ def profit():
         st.set_page_config(page_title="PT.Supermarket Sejahtera", layout="centered", initial_sidebar_state="auto", page_icon="🏣")
         st.title("""
         Prediksi Profit Supermarket
+        \n Dataset yang digunakan berasal dari [Kaggle](https://www.kaggle.com/datasets/roopacalistus/superstore)
         """)
 
         # Formulir untuk input data dari pengguna
