@@ -448,19 +448,19 @@ def profit():
                 features['Category_emb'] = le.fit_transform(features['Category'])
                 features['Sub_Category_emb'] = le.fit_transform(features['Sub_Category'])
 
-        # Pilih fitur-fitur yang sudah diseleksi
-        features = features[selected_features]
+                # Pilih fitur-fitur yang sudah diseleksi
+                features = features[selected_features]
     
-        # Lakukan prediksi
-        prediction_log = model.predict(features)
-        prediction = np.expm1(prediction_log)[0]
+                # Lakukan prediksi
+                prediction_log = model.predict(features)
+                prediction = np.expm1(prediction_log)[0]
     
-        # Tampilkan hasil
-        st.subheader('Hasil Prediksi:')
-        if prediction > 0:
-                st.success(f"Profit yang diprediksi: **${prediction:,.2f}** (Untung)")
-        else:
-                st.error(f"Profit yang diprediksi: **${prediction:,.2f}** (Rugi)")
+                # Tampilkan hasil
+                st.subheader('Hasil Prediksi:')
+                if prediction > 0:
+                        st.success(f"Profit yang diprediksi: **${prediction:,.2f}** (Untung)")
+                else:
+                        st.error(f"Profit yang diprediksi: **${prediction:,.2f}** (Rugi)")
                 
             
 def heart():
